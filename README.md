@@ -1,6 +1,10 @@
 # grunt-runtime-t4-template-task
 
-> Generates C# class from T4 template to be used at runtime.
+> Generates C# class from T4 Runtime Text Template.
+This generator was created because it's not possible to use the built-in Runtime Text Templates in .NET Core. They have dependencies on System.CodeDom which is not available in .NET Core.
+This generator creates a pure C# class with TransformText method. 
+Only C# language is supported.
+ 
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -26,7 +30,7 @@ In your project's Gruntfile, add a section named `runtime_t4_template_task` to t
 grunt.initConfig({
   runtime_t4_template_task: {
     options: {
-      // Task-specific options go here.
+      // there are no configuration options yet
     },
     your_target: {
       // Target-specific file lists and/or options go here.
@@ -35,48 +39,19 @@ grunt.initConfig({
 });
 ```
 
-### Options
-
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+Provided you want to generate code from Runtime T4 Template named "OutputTemplate.tt", the syntax looks like this. 
+You need to specify the target namespace and class name that will be generated.
+The class will have `TransformText` method which can be called at runtime.
 
 ```js
 grunt.initConfig({
   runtime_t4_template_task: {
     options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-});
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  runtime_t4_template_task: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      "OutputTemplate.cs": { path: "OutputTemplate.tt", namespace: "MyApp", className: "OutputTemplate" }
     },
   },
 });
