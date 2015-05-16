@@ -1,7 +1,7 @@
 {
   "name": "grunt-runtime-t4-template-task",
   "description": "Grunt tasks that generates C# class from Runtime Text Template to be used at runtime.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/riganti/grunt-runtime-t4-template-task",
   "author": {
     "name": "Tomáš Herceg",

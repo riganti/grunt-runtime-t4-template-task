@@ -15,10 +15,7 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask('runtime_t4_template_task', 'Generates C# class from T4 template to be used at runtime.', function () {
     // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
+    var options = this.options({});
     
     // Generate the template code
     function generateRuntimeTemplateCode(source, namespace, className) {
@@ -95,9 +92,16 @@ module.exports = function (grunt) {
       for (var i = 0; i < declarations.length; i++) {
         result += declarations[i] + "\r\n";
       }
+      result += "        private System.Text.StringBuilder __sb;\r\n\r\n";
+      result += "        private void Write(string text) {\r\n";
+      result += "            __sb.Append(text);\r\n";
+      result += "        }\r\n\r\n";
+      result += "        private void WriteLine(string text) {\r\n";
+      result += "            __sb.AppendLine(text);\r\n";
+      result += "        }\r\n\r\n";
       result += "        public string TransformText()\r\n";
       result += "        {\r\n";
-      result += "            var __sb = new System.Text.StringBuilder();\r\n";
+      result += "            __sb = new System.Text.StringBuilder();\r\n";
       result += transformCode + "\r\n";
       result += "            return __sb.ToString();\r\n";
       result += "        }\r\n";

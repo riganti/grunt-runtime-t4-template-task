@@ -10,9 +10,19 @@ namespace MyNamespace
 public List<int> Items { get; set; }
 public string Template { get; set; }
 
+        private System.Text.StringBuilder __sb;
+
+        private void Write(string text) {
+            __sb.Append(text);
+        }
+
+        private void WriteLine(string text) {
+            __sb.AppendLine(text);
+        }
+
         public string TransformText()
         {
-            var __sb = new System.Text.StringBuilder();
+            __sb = new System.Text.StringBuilder();
 __sb.Append(@" 
 
 This is a ");
