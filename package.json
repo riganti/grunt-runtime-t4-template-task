@@ -1,0 +1,41 @@
+{
+  "name": "grunt-runtime-t4-template-task",
+  "description": "Grunt tasks that generates C# class from Runtime Text Template to be used at runtime.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/riganti/grunt-runtime-t4-template-task",
+  "author": {
+    "name": "Tomáš Herceg",
+    "email": "herceg@vbnet.cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/riganti/grunt-runtime-t4-template-task.git"
+  },
+  "bugs": {
+    "url": "https://github.com/riganti/grunt-runtime-t4-template-task/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/riganti/grunt-runtime-t4-template-task/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}

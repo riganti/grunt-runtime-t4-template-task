@@ -1,0 +1,15 @@
+<#@ template language="C#" #>
+<#@ import namespace="System" #> 
+<#@ import namespace="System.Linq" #> 
+<#@ import namespace="System.Collections.Concurrent" #> 
+
+This is a <#= Template #>
+
+<# for (var i in Items) { #>
+   item <#= i #>
+<# } #>
+
+<#+
+public List<int> Items { get; set; }
+public string Template { get; set; }
+#>
